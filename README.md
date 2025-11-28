@@ -562,7 +562,7 @@ graph LR
     Start["START<br/>Orchestrator triggered (manual or scheduled)"] --> DBConnect["Connect to DB<br/>Fetch misclassified counts"]
     DBConnect --> ComputeLen["Compute dataset_len per label"]
     ComputeLen --> CheckThreshold{"dataset_len >= threshold?"}
-    CheckThreshold -->|Yes| TriggerPrep["Restart Dataset Prep Space<br/>for labels above threshold"]
+    CheckThreshold -->|Yes| TriggerPrep["Restart Dataset Prep Space"]
     CheckThreshold -->|No| SkipLabel["Skip label<br/>Log info"] --> CheckThreshold
     TriggerPrep --> PollDataset["Poll HF Hub metadata<br/>Wait for new dataset version"]
     PollDataset -->|Success| RestartRetrain["Restart retrain HF Space<br/>for updated labels"]
